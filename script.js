@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", fetchData);
 
-
 function fetchData() {
   const apiUrl = "https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json"; 
 
@@ -17,7 +16,7 @@ function fetchData() {
         displayData(data.categories[0].category_products); 
     })
     .catch(error => {
-      console.error('There was a problem with the fetch operation:', error.message);
+      console.error('There was a problem with the fetch operation:', error);
     });
 }
 
@@ -51,9 +50,9 @@ function displayTabs(data) {
                 tabButton.style.backgroundColor = "black";
                 tabButton.style.color = "white";
             } else if (category.category_name === "Women") {
-                iconSource = "vectorwomen.png";
+                iconSource = "vectorWomen.png";
             } else {
-                iconSource = "Vectorkids.png";
+                iconSource = "VectorKids.png";
             }
             icon.src = iconSource;
             tabButton.prepend(icon);
@@ -87,6 +86,16 @@ function badgeCalc(badge_text) {
     }
 }
 
+function secondImage(second_image, image, title) {
+    if (second_image === "empty") {
+        return `<img class="product-image" alt="${title}" src="${image}" style="display: none;">`;
+    } else {
+        
+        return `<img class="product-image" alt="${title}" src="${second_image}" style="display: none;">`;
+    }
+}
+
+
 function displayData(selectedCategoryProducts) {
     const dataContainer = document.getElementById("data");
     dataContainer.innerHTML = ""; 
@@ -106,7 +115,7 @@ function displayData(selectedCategoryProducts) {
             <div class="carousel">
                 <div class="image-container">
                     <img class="product-image" src="${product.image}" alt="${product.title}">
-                    <img class="product-image" src="${product.second_image}" alt="${product.title}" style="display: none;">
+                    ${secondImage(product.second_image, product.image, product.title)}
                     ${badgeCalc(product.badge_text)}
                 </div>
 
@@ -128,17 +137,26 @@ function displayData(selectedCategoryProducts) {
     categoryElement.appendChild(productListElement);
     dataContainer.appendChild(categoryElement);
   
-   
+    
     const carousels = document.querySelectorAll('.carousel');
     carousels.forEach(carousel => {
         const images = carousel.querySelectorAll('.image-container img');
         let currentImageIndex = 0;
+        let timer; 
+
+        
         const nextImage = () => {
             images[currentImageIndex].style.display = 'none';
             currentImageIndex = (currentImageIndex + 1) % images.length;
             images[currentImageIndex].style.display = 'block';
+            timer = setTimeout(nextImage, 3000); 
         };
-        setInterval(nextImage, 3000); 
+
+        nextImage(); 
+        carousel.addEventListener('mouseenter', () => clearInterval(timer));
+        
+        carousel.addEventListener('mouseleave', nextImage);
     });
 }
+
 
