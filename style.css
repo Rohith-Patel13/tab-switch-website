@@ -107,21 +107,24 @@ display:flex;
   }
 
 
-  .tab-btn{
-    width:230px;
-    padding-top: 8px;
-    padding-bottom:8px;
+
+
+  .tab-btn {
+    width: 230px; 
+    padding-top: 12px;
+    padding-bottom:13px;
     border:none;
     border-radius:2px;
     font-weight: bold;
-
+    font-size:18px;
+  }
+  
+  .iconshumans {
+    width: 17px; 
+    height: auto; 
+    margin-right: 5px; 
   }
 
-  .iconshumans{
-    padding-right:5px;
-    width:10px;
-    height:normal;
-  }
 
 .compare-price{
 text-decoration: line-through;
@@ -212,6 +215,7 @@ color:#8F8F8F
     width: calc(25% - 20px); 
   }
 }
+
 
 
 
