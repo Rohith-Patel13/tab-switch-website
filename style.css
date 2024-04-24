@@ -155,21 +155,35 @@ color:#8F8F8F
 
 
 @media only screen and (max-width: 767px) {
-  .tabs {
+  /* .tabs {
     display: flex;
     justify-content: center;
-  }
+  } */
 
   .product-list {
     display: flex;
     justify-content: center;
   }
 
-  .tab-btn {
+  /* .tab-btn {
     width: auto; 
     margin: 5px 0;
     display: block; 
     text-align: center; 
+  } */
+  .tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tab-btn {
+    width: 230px; 
+    margin: 5px 0; 
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
   }
 }
 
@@ -196,6 +210,7 @@ color:#8F8F8F
     width: calc(25% - 20px); 
   }
 }
+
 
 
 
