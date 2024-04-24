@@ -51,9 +51,9 @@ function displayTabs(data) {
                 tabButton.style.backgroundColor = "black";
                 tabButton.style.color = "white";
             } else if (category.category_name === "Women") {
-                iconSource = "vectorWomen.png";
+                iconSource = "vectorwomen.png";
             } else {
-                iconSource = "VectorKids.png";
+                iconSource = "Vectorkids.png";
             }
             icon.src = iconSource;
             tabButton.prepend(icon);
