@@ -16,7 +16,7 @@ function fetchData() {
         displayData(data.categories[0].category_products); 
     })
     .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
+      console.log('There was a problem with the fetch operation:', error.message);
     });
 }
 
@@ -27,10 +27,13 @@ function displayTabs(data) {
         tabButton.classList.add("tab-btn");
         tabContainer.appendChild(tabButton);
 
+        console.log("category_name: ",category.category_name)
+
         tabButton.textContent = category.category_name;
 
         tabButton.addEventListener("click", () => {
             const selectedCategoryProducts = category.category_products;
+            console.log("category_products: ",category.category_products)
             displayData(selectedCategoryProducts);
             const tabButtons = document.querySelectorAll(".tab-btn");
             tabButtons.forEach(button => {
